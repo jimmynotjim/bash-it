@@ -17,6 +17,13 @@ function git_first_push {
   git push origin master:refs/heads/master
 }
 
+function git_pub {
+    about 'publishes current branch to remote'
+    group 'git'
+
+    git push -u origin $(git rev-parse --abbrev-ref HEAD)
+}
+
 function git_remove_missing_files() {
   about "git rm's missing files"
   group 'git'
