@@ -1,11 +1,12 @@
 cite 'about-alias'
-about-alias 'vagrant'
+about-alias 'vagrant aliases'
 
-# Bundler Commands
+# Aliases
 alias vup="vagrant up"
 alias vh="vagrant halt"
 alias vs="vagrant suspend"
 alias vr="vagrant resume"
-alias vrld="vagrant reload"
+alias vrl="vagrant reload"
 alias vssh="vagrant ssh"
-alias vstat="vagrant status"
+alias vst="vagrant status"
+alias vl="vagrant list"
