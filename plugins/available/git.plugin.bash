@@ -24,6 +24,12 @@ function git_pub {
     git push -u origin $(git rev-parse --abbrev-ref HEAD)
 }
 
+function git_ar {
+    about 'Add & Track a remote branch'
+    group 'git'
+    git checkout -b $1 origin/$1
+}
+
 function git_remove_missing_files() {
   about "git rm's missing files"
   group 'git'
