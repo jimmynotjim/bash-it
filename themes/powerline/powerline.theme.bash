@@ -91,6 +91,14 @@ BOLD="\[$(tput bold)\]"
             PS_SYMBOL=$PS_SYMBOL_OTHER
     esac
 
+    VIRTUALENV_POWERLINE_PROMPT_PREFIX='('
+    VIRTUALENV_POWERLINE_PROMPT_SUFFIX=')'
+    function powerline_virtualenv_prompt {
+      if [[ -n "$VIRTUAL_ENV" ]]; then
+        virtualenv=`basename "$VIRTUAL_ENV"`
+        echo -e "$VIRTUALENV_POWERLINE_PROMPT_PREFIX$virtualenv$VIRTUALENV_POWERLINE_PROMPT_SUFFIX"
+      fi
+    }
 
     function prompt_command() {
         # Check the exit code of the previous command and display different
@@ -101,10 +109,20 @@ BOLD="\[$(tput bold)\]"
             local BG_EXIT="$BG_RED"
         fi
 
+        # Change from the default || to () I'm used to seeing:
+        VIRTUALENV_THEME_PROMPT_PREFIX='('
+        VIRTUALENV_THEME_PROMPT_SUFFIX=')'
+        # ...but these aren't overriding the values in base.theme.bash
+        # Load the virtualenv if available
+        # local virtualenv="$(virtualenv_prompt)"
+        local virtualenv="$(powerline_virtualenv_prompt)"
+
+
         PS1="\n$BG_BASE1$FG_BASE3 \w $RESET"
         PS1+="$BG_BLUE$FG_BASE3$(__git_branch)$RESET"
         PS1+="$BG_EXIT$FG_BASE3 $PS_SYMBOL $RESET\n"
-        PS1+="$ "
+        # Include the virtual env on the prompt if available -- How to wrap this in () instad of || ?
+        PS1+="${virtualenv}$ "
     }
 
 PROMPT_COMMAND=prompt_command;
