@@ -100,14 +100,14 @@ BOLD="\[$(tput bold)\]"
         else
             local BG_EXIT="$BG_RED"
         fi
-		
-		# Load the virtualenv if available
-		local virtualenv="$(virtualenv_prompt)"
+
+        # Load the virtualenv if available
+        local virtualenv="$(virtualenv_prompt)"
 
         PS1="\n$BG_BASE1$FG_BASE3 \w $RESET"
         PS1+="$BG_BLUE$FG_BASE3$(__git_branch)$RESET"
         PS1+="$BG_EXIT$FG_BASE3 $PS_SYMBOL $RESET\n"
-		# Include the virtual env on the prompt if available -- How to wrap this in () instad of || ?
+        # Include the virtual env on the prompt if available -- How to wrap this in () instad of || ?
         PS1+="${virtualenv}$ "
     }
 
