@@ -6,5 +6,6 @@ custom/*
 aliases/custom.aliases.bash
 lib/custom.bash
 plugins/custom.plugins.bash
+*themes/custom
 *.swp
 .*.un~
